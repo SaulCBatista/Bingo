@@ -1,5 +1,6 @@
 package com.Bingo.domain.sorteio;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -34,5 +35,13 @@ public class Sorteio {
 	
 	@OneToMany(mappedBy = "id")
 	private List<Cartela> quantidadeDeCartelas = new ArrayList<>();
+	
+	private List<Integer> numerosSorteados = new ArrayList<>();
+	
+	private LocalDateTime dataInicio;
+	
+	private LocalDateTime dataSorteio;
+	
+	private boolean ativo;
 	
 }
