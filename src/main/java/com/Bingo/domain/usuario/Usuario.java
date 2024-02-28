@@ -23,4 +23,13 @@ public class Usuario {
 	
 	private String name;
 	
+	private String email;
+	
+	private String senha;
+	
+	public Usuario(DadosCadastroUsuario dados) {
+		this.name = dados.nome();
+		this.email = dados.email();
+		this.senha = dados.senha();
+	}
 }
