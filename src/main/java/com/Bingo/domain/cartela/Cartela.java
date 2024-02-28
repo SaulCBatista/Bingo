@@ -23,4 +23,6 @@ public class Cartela {
 	
 	private int[] numeros = new int[25];
 	
+	private boolean disponivel;
+	
 }
