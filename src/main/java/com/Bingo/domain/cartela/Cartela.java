@@ -10,13 +10,14 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-@Table(name = "bingo_card")
-@Entity(name = "Bingo_card")
+@Table(name = "cartela")
+@Entity(name = "Cartela")
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(of = "id")
 public class Cartela {
+
 
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
@@ -25,4 +26,8 @@ public class Cartela {
 	
 	private boolean disponivel;
 	
+	public Cartela(int[] numerosDaCartela, boolean disponivel ) {
+		this.numeros = numerosDaCartela;
+		this.disponivel = disponivel;
+	}
 }
