@@ -21,14 +21,14 @@ public class Usuario {
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	private String name;
+	private String nome;
 	
 	private String email;
 	
 	private String senha;
 	
 	public Usuario(DadosCadastroUsuario dados) {
-		this.name = dados.nome();
+		this.nome = dados.nome();
 		this.email = dados.email();
 		this.senha = dados.senha();
 	}
