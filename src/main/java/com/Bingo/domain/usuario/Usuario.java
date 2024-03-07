@@ -5,6 +5,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -31,5 +32,15 @@ public class Usuario {
 		this.nome = dados.nome();
 		this.email = dados.email();
 		this.senha = dados.senha();
+	}
+
+	public void atualizarDados(DadosAtualizacaoUsuario dados) {
+		if(!dados.nome().isBlank()) {
+			this.nome = dados.nome();
+		}
+		
+		if(!dados.senha().isBlank()) {
+			this.senha = dados.senha();
+		}
 	}
 }
