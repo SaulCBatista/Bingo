@@ -1,6 +1,7 @@
 package com.Bingo.domain.user;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.catchThrowable;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.util.Optional;
@@ -16,6 +17,7 @@ import org.springframework.test.context.ActiveProfiles;
 import com.Bingo.domain.usuario.UsuarioService;
 import com.Bingo.domain.usuario.Usuario;
 import com.Bingo.domain.usuario.UsuarioRepository;
+import com.Bingo.infra.exception.sytemExeption.AuthenticationException;
 import com.Bingo.infra.exception.sytemExeption.BusinessRuleExeption;
 
 @SpringBootTest
@@ -66,6 +68,14 @@ public class UserServiceTest {
 		
 		assertThrows(BusinessRuleExeption.class, () -> service.cadastrar(usuario));
 		Mockito.verify(repository, Mockito.never()).save(usuario);
+	}
+	
+	@Test
+	@DisplayName("Deve retornar um erro quando não encontrar um usuario")
+	public void cadastrarUmUsuarioCenario3() {
+		Mockito.when(repository.findByEmail(Mockito.anyString())).thenReturn(Optional.empty());
+		Throwable exception = catchThrowable(() -> service.auteticar("usuario@email.com", "senha"));
+		assertThat(exception).isInstanceOf(AuthenticationException.class).hasMessage("couldn't possible find a user");
 	}
 	
 }

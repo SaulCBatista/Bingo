@@ -1,6 +1,7 @@
 package com.Bingo.domain.cartela;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,12 +19,16 @@ public class CartelaService implements CartelaServiceInterface{
 	private GeradorDeNumerosService geradorDeNumerosService;
 	
 	@Override
-	public Cartela cadastrar() {
+	public Cartela gerar() {
 		int[] numerosDaCartela = gerarNumeros();
 		Cartela cartela = new Cartela(numerosDaCartela, true);
-		return repository.save(cartela);
+		return cartela;
 	}
 
+	public List<Cartela> salvarTodas(List<Cartela> cartelas) {
+		return repository.saveAll(cartelas);
+	}
+	
 	@Override
 	public int[] gerarNumeros() {
 		ArrayList<Integer>todosOsNumeros = geradorDeNumerosService.listarTodosOsNumeros();

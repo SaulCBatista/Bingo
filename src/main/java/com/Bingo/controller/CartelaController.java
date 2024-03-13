@@ -17,6 +17,7 @@ import com.Bingo.domain.cartela.CartelaRepository;
 import com.Bingo.domain.cartela.CartelaService;
 import com.Bingo.domain.cartela.DadosDetalhamentoCartela;
 import com.Bingo.domain.cartela.DadosListagemCartela;
+import com.Bingo.domain.sorteio.Sorteio;
 
 import jakarta.transaction.Transactional;
 
@@ -29,16 +30,6 @@ public class CartelaController {
 	
 	@Autowired
 	private CartelaService service;
-	
-	@PostMapping
-	@Transactional
-	public ResponseEntity cadastrar(UriComponentsBuilder uriBuilder) {
-		Cartela cartela = service.cadastrar();
-		
-		var uri = uriBuilder.path("/cartela/{id}").buildAndExpand(cartela.getId()).toUri();
-		
-		return ResponseEntity.created(uri).body(new DadosDetalhamentoCartela(cartela));
-	}
 	
 	@GetMapping
 	public ResponseEntity<Page<DadosListagemCartela>> listar(@PageableDefault(size = 10, sort = {"id"}) Pageable paginacao) {
