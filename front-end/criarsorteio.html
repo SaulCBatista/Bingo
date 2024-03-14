@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assets/css/stylecadastro.css">
+    <title>Criar Sorteio</title>
+</head>
+<body>
+    <div class="form">
+        <form action="#">
+            <div class="form-header">
+                <div class="title">
+                    <h1>Criar Sorteio</h1>
+                </div>
+                
+            </div>
+            <div>
+                <div>
+                    <label for="sala">Nome da Sala:</label><br>
+                    <input id="sala" type="text" name="sala" placeholder="Digite o nome da sala" required>
+                </div>
+
+                <div>
+                    <label for="premio">Prêmio:</label><br>
+                    <input id="premio" type="text" name="premio" placeholder="Digite o nome da sala" required>
+                </div>
+
+                <div>
+                    <label for="password">Senha:</label><br>
+                    <input id="password" type="password" name="password" placeholder="Digite sua senha" required>
+                </div>
+
+                <div>
+                    <label for="data">Selecione uma data:</label><br>
+                    <input id="data" type="date">
+                </div>
+                
+                <div>
+                    <label for="hora">Prêmio:</label><br>
+                    <input id="hora" type="number" name="hora" placeholder="Digite a Hora" required>
+                </div>
+
+                <div class="gamemode">
+                    <label for="completarcartela" class="radiolabel">
+                        <input id="completarcartela" type="radio" name="modo">Completar Cartela
+                    </label>
+                    
+                    <label for="completarpadrao" class="radiolabel">
+                        <input id="completarpadrao" type="radio" name="modo">Completar Cartela
+                    </label>
+                </div>
+
+
+            <div class="login-button">
+                <button><a href="#">Criar Sala</a></button>
+            
+            <div><br></div>
+            
+            <div class="cadastro-button">
+                <button><a href="#">Cancelar</a></button>
+            </div>
+            </div>
+        </form>
+
+    </div>
+</body>
+</html>
