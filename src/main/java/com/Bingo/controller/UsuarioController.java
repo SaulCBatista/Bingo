@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import com.Bingo.domain.usuario.DadosAtualizacaoUsuario;
+import com.Bingo.domain.usuario.DadosAutenticacaoUsuario;
 import com.Bingo.domain.usuario.DadosCadastroUsuario;
 import com.Bingo.domain.usuario.DadosDetalhamentoUsuario;
 import com.Bingo.domain.usuario.DadosListagemUsuario;
@@ -42,6 +43,12 @@ public class UsuarioController {
 		var uri = uriBuilder.path("/usuario/{id}").buildAndExpand(usuario.getId()).toUri();
 		
 		return ResponseEntity.created(uri).body(new DadosDetalhamentoUsuario(usuario));
+	}
+	
+	@PostMapping("/login")
+	public ResponseEntity autenticar(@RequestBody @Valid DadosAutenticacaoUsuario dados) {
+		Usuario usuario = service.auteticar(dados.email(), dados.senha());
+		return ResponseEntity.ok(usuario);
 	}
 	
 	@GetMapping
