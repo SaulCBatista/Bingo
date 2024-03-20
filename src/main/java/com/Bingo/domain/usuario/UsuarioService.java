@@ -46,6 +46,10 @@ public class UsuarioService implements UsuarioServiceInterface {
 		}
 	}
 
+	public Usuario buscarUsuario(Long id) {
+		return repository.findById(id).orElseThrow(() -> new BusinessRuleExeption("Usuario não encontrado pelo id"));
+	}
+
 	
 	
 }

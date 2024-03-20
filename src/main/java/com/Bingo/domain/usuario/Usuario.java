@@ -1,17 +1,25 @@
 package com.Bingo.domain.usuario;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import com.Bingo.domain.cartela.Cartela;
+import com.Bingo.domain.sorteio.Sorteio;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-@Table(name = "users")
-@Entity(name = "Users")
+@Table(name = "usuarios")
+@Entity(name = "Usuario")
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
@@ -26,6 +34,12 @@ public class Usuario {
 	private String email;
 	
 	private String senha;
+	
+	@OneToMany(mappedBy = "comprador", cascade = CascadeType.ALL)
+	private List<Cartela> cartelas = new ArrayList<>();
+	
+	@OneToMany(mappedBy = "administrador", cascade = CascadeType.ALL)
+	private List<Sorteio> sorteios = new ArrayList<>();
 	
 	public Usuario(DadosCadastroUsuario dados) {
 		this.nome = dados.nome();

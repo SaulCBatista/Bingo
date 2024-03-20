@@ -35,7 +35,7 @@ public class UserServiceTest {
 		String email = "usuario@email.com";
 		String senha = "senha";
 		
-		Usuario usuario = new Usuario(1l, "nome", email, senha);
+		Usuario usuario = new Usuario(1l, "nome", email, senha, null, null);
 		Mockito.when(repository.findByEmail(email)).thenReturn(Optional.of(usuario));
 		
 		Usuario resultado = service.auteticar(email, senha);
@@ -47,7 +47,7 @@ public class UserServiceTest {
 	@DisplayName("Deveria cadastrar um usuario")
 	public void cadastrarUmUsuarioCenario1() {
 		Mockito.doNothing().when(service).validarEmail(Mockito.anyString());
-		Usuario usuario = new Usuario(1l, "nome", "usuario@email.com", "senha");
+		Usuario usuario = new Usuario(1l, "nome", "usuario@email.com", "senha", null, null);
 		Mockito.when(repository.save(Mockito.any(Usuario.class))).thenReturn(usuario);
 		
 		Usuario usuarioSalvo = service.cadastrar(usuario);
@@ -63,7 +63,7 @@ public class UserServiceTest {
 	@DisplayName("Não deveria cadastrar um usuario com um email já cadastrado")
 	public void cadastrarUmUsuarioCenario2 () {
 		String email = "usuario@email.com";
-		Usuario usuario = new Usuario(1l, "nome", email, "senha");
+		Usuario usuario = new Usuario(1l, "nome", email, "senha", null, null);
 		Mockito.doThrow(BusinessRuleExeption.class).when(service).validarEmail("usuario@email.com");;
 		
 		assertThrows(BusinessRuleExeption.class, () -> service.cadastrar(usuario));
