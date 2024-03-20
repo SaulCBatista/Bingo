@@ -1,6 +1,7 @@
 package com.Bingo.domain.cartela;
 
 import com.Bingo.domain.sorteio.Sorteio;
+import com.Bingo.domain.usuario.Usuario;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -15,7 +16,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Table(name = "cartela")
+@Table(name = "cartelas")
 @Entity(name = "Cartela")
 @Getter
 @Setter
@@ -31,8 +32,12 @@ public class Cartela {
 	private int[] numeros = new int[25];
 	
 	@ManyToOne
-	@JoinColumn(name = "sorteio_id")
+	@JoinColumn(name = "sorteios_id")
 	private Sorteio sorteio;
+	
+	@ManyToOne
+	@JoinColumn(name = "usuarios_id")
+	private Usuario comprador;
 	
 	private boolean disponivel;
 	
