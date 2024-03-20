@@ -7,6 +7,8 @@ public record DadosCasdatroSorteio(
 		
 		int quantidadeDeCartelas,
 		
-		LocalDateTime dataSorteio) {
+		LocalDateTime dataSorteio,
+		
+		Long idAdministrador) {
 
 }
