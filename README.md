@@ -12,5 +12,5 @@
 <h2 align=center>Como usar</h2>
 
 - Clone o repositorio
-- Execurte o arquivo ´BingoApplication.java´
+- Execurte o arquivo `BingoApplication.java`
 - <a href=http://localhost:8080/swagger-ui.html>Acesse o link para vizualizar os end-points<a>
